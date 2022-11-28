@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var srartArray = [1, 2, 3, 4, 5, 6,];
+
+        function forEachMethod(array, callback) {
+            for (let i = 0; i < array.length; i++) {
+                callback(array.at(i), i, array);
+            }
+        }
+
+        function mapMethod(array, callback) {
+            var result = [];
+            for (let index = 0; index < array.length; index++) {
+                a = callback(array.at(index), index, array);
+                result.push(a);
+            }
+            return result;
+        }
+
+        function filterMethod(array, callback) {
+            var result = [];
+            for (let index = 0; index < array.length; index++) {
+                resultCalb = callback(array.at(index), index, array);
+                if (resultCalb) {
+                    result.push(array.at(index));
+                }
+
+            }
+            return result;
+        }
+
+        forEachMethod(srartArray, function (value, index, array) {
+            if(value % 2 === 0){
+                console.log(value, index, array);
+            }
+        })
+
+        console.log(
+            mapMethod(srartArray, function (value, index, array) {
+                return value ** 3;
+            })
+        );
+
+        console.log(
+            filterMethod(srartArray, function (value) {
+                if(value %2 === 0){
+                    return value;
+                };
+            })
+        )
+    </script>
+</body>
+
+</html>
